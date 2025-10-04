@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 
     let Colgates = document.getElementById("Colgate")
@@ -187,7 +186,6 @@ function Inc(btn){
     
     counter.textContent = current;
 }
-
 
 
 
