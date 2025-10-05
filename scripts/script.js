@@ -278,13 +278,13 @@ function cartItemAdd() {
     }
     cartItems.forEach(item => {
         let div = document.createElement("div");
-        div.className = "border border-gray-100 px-2 py-2 flex items-center gap-4";
+        div.className = "border border-gray-100 px-2 py-2 bg-white flex items-center gap-4";
 
         div.innerHTML = `
-            <div class="h-14 w-14 flex-shrink-0">
+            <div class="h-14 w-14 flex-shrink-0 ">
                 <img class="h-full w-full object-contain" src="${item.img}" alt="">
             </div>
-            <div class="flex flex-col leading-4 flex-1">
+            <div class="flex flex-col leading-4  flex-1">
                 <h3 class="uppercase font-semibold text-sm">${item.prName}</h3>
                 <p class="font-mono">
                     <span class="text-xs font-bold">${item.currPrice}</span>
@@ -294,8 +294,12 @@ function cartItemAdd() {
             </div>
             <div class="qty-controls ml-auto flex justify-between items-stretch h-6 gap-1 rounded">
                 <div onclick="updateCartQty('${item.id}', -1)"
-                    class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">-</div>
-                <div class="px-2 flex items-center justify-center text-[0.7rem]">${item.quantity}</div>
+                    class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
+                    -
+                    </div>
+                <div class="px-2 w-8 flex items-center bg-gray-100 justify-center text-[0.7rem]">
+                ${item.quantity}
+                </div>
                 <div onclick="updateCartQty('${item.id}', 1)"
                     class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">+</div>
             </div>
