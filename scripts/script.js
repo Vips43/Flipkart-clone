@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     colgateData.map(e => {
         Colgates.innerHTML +=
-            `<div class="card p-2 bg-gray-100 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
-        <div class="w-full border border-gray-200">
+            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
+        <div class="w-full border border-gray-100">
         <img class="w-full" src=${e.img} alt="">
         </div>
         <div class="flex flex-col w-full">
@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     mobileData.map(e => {
         Mobiles.innerHTML +=
-            `<div class="card p-2 bg-gray-100 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
-            <div class="w-full border border-gray-200">
+            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
+            <div class="w-full border border-gray-100">
                 <img class="w-full" src=${e.img} alt="">
             </div>
             <div class="flex flex-col w-full">
@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     footwearData.map(e => {
         Footwear.innerHTML +=
-            `<div class="card p-2 bg-gray-100 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
-            <div class="w-full border border-gray-200">
+            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
+            <div class="w-full border border-gray-100">
                 <img class="w-full" src=${e.img} alt="">
             </div>
             <div class="flex flex-col w-full">
