@@ -14,33 +14,72 @@
 </head>
 
 <body class="bg-gray-200 overflow-x-hidden">
-  <nav class="p-5 max-w-3xl hidden mx-auto">
+  <nav class="p-5 max-w-3xl mx-auto">
     <main class="flex justify-between">
-      <div class="flex items-center gap-3 hover:bg-gray-100 px-2">
+      <div class="flex items-center">
         <img src="image/Flipkar-logo.svg" alt="">
       </div>
-      <div class="flex items-center gap-2 hover:bg-gray-100 px-2">
+      <div class="lg:flex md:flex hidden items-center gap-2 hover:bg-gray-100 px-2">
         <input class="border " type="text">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <div class="flex items-center hover:bg-gray-100 px-2">
-        <i class="material-icons">download</i>
-      </div>
-      <div class="flex items-center hover:bg-gray-100 px-2">
-        <span class="material-symbols-outlined">account_circle</span>
-        <span>Login</span>
-      </div>
-      <div class="flex items-center hover:bg-gray-100 px-2">
-        <span class="material-symbols-outlined">shopping_cart</span>
-        <sup id="shopping_cart">0</sup>
+      <div class="flex ">
+
+        <div class="flex items-center hover:bg-gray-100 px-2">
+          <i class="material-icons">download</i>
+        </div>
+        <div class="flex items-center hover:bg-gray-100 px-2">
+          <span class="material-symbols-outlined">account_circle</span>
+          <span>Login</span>
+        </div>
+        <div class=" relative flex items-center hover:bg-white px-2 transition-all">
+          <span id="cartIcon" class="material-symbols-outlined select-none cursor-pointer">shopping_cart</span>
+          <sup id="shopping_cart">0</sup>
+
+          <section class="drop-down-cart absolute top-10 right-0 z-50 bg-white max-w-2xl w-md shadow-md transition-all">
+            <div id="cartIconShow" class="space-y-2  p-2">
+
+              <div class="border border-gray-100 px-2 flex flex-nowrap items-center gap-5">
+                <div class="h-14">
+                  <img class="h-full" src="image/Col.jpeg" alt="">
+                </div>
+                <div class="flex flex-col leading-4">
+                  <h3 class="uppercase font-semibold">colgate charcoal</h3>
+                  <p class="font-mono">
+                    <span class="text-xs font-bold">15,999₹</span>
+                    <span class="text-xs text-gray-400 line-through">
+                      11,498₹</span>
+                    <span class="text-xs font-bold text-green-500">28%</span>
+                  </p>
+                </div>
+                <div class="qty-controls ml-auto flex justify-between items-stretch h-6 gap-1 rounded">
+                  <div onclick="Dec(this)"
+                    class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
+                    -
+                  </div>
+                  <div class="px-1 flex items-center justify-center text-[0.6rem] rounded-sm">1</div>
+                  <div onclick="Inc(this)"
+                    class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
+                    +
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </section>
+
+
+        </div>
       </div>
     </main>
   </nav>
-  <section class="max-w-3xl w-full mx-auto border *:transition-all">
-    <h3 class="text-2xl font-bold">Product Page</h3>
+  <section class="max-w-3xl w-full mx-auto *:transition-all">
+    <h3 class="text-2xl font-bold px-3">Product Page</h3>
     <section class="sticky top-0 bg-white z-10">
-      <main id="navigat" class="flex gap-5 mt-2 mb-1">
-        <button data-set="1" class="btn active text-gray-400 text-sm lg:text-base py-1 px-2 cursor-pointer">Section 1</button>
+      <main id="navigat" class="flex gap-5 mt-2 mb-1 px-2">
+        <button data-set="1" class="btn active text-gray-400 text-sm lg:text-base py-1 px-2 cursor-pointer">Section
+          1</button>
         <button data-set="2" class="btn text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Section 2</button>
         <button data-set="3" class="btn  text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Section 3</button>
       </main>
@@ -49,8 +88,9 @@
 
 
     <!-- colgate section -->
-    <div data-set="1" class="product active border">
-      <div id="Colgate" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:p-3 md:p-3 p-1 transition-all cursor-pointer">
+    <div data-set="1" class="product activehidden">
+      <div id="Colgate"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:p-3 md:p-3 p-1 transition-all cursor-pointer">
 
         <!-- card 1 -->
         <!-- <div class="card p-2 bg-gray-100 flex flex-col justify-between items-center gap-2 shadow-md transition-all">
@@ -90,19 +130,16 @@
           </div>
         </div> -->
 
-
-
-
       </div>
     </div>
 
     <!-- mobile section -->
-    <div data-set="2" class="product ">
+    <div data-set="2" class="product hidden">
       <div id="Mobile" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-3 transition-all cursor-pointer">
       </div>
     </div>
 
-    <div data-set="3" class="product ">
+    <div data-set="3" class="product hidden">
       <div id="Footwear" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-3 transition-all cursor-pointer">
 
 
@@ -112,6 +149,8 @@
       </div>
     </div>
   </section>
+
+
 
 
   <script src="scripts/data.js"></script>
