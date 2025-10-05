@@ -217,7 +217,6 @@ function Dec(btn) {
         card.querySelector('.add-btn').classList.remove('hidden');
         card.querySelector('.qty-controls').classList.add('hidden');
     }
-    console.log(parseInt(counter.textContent));
 
     cartUpdate(-1);
     cartPush(card, current)
@@ -320,10 +319,5 @@ function updateCartQty(id, change){
     shoppingCart.textContent = totalQty;
 
     cartItemAdd();
-
-
-    console.log(item);
-    
-    // item.quantity
 }
 
