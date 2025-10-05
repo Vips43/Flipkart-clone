@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="
+https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="src/output.css">
   <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -46,7 +48,7 @@
             class="drop-down-cart absolute hidden max-h-51 top-8 right-0 z-50 bg-gray-200 max-w-2xl w-md shadow-md transition-all overflow-y-auto select-none">
             <div id="cartIconShow" class="space-y-2 p-2">
 
-               <!-- <div class="border border-gray-100 px-2 flex flex-nowrap items-center gap-5 rounded-lg">
+              <!-- <div class="border border-gray-100 px-2 flex flex-nowrap items-center gap-5 rounded-lg">
                 <div class="h-14">
                   <img class="h-full" src="image/Col.jpeg" alt="">
                 </div>
@@ -72,7 +74,7 @@
                   </div>
                 </div>
               </div>  -->
-              
+
 
             </div>
 
@@ -83,7 +85,39 @@
     </main>
   </nav>
 
-  
+  <div class="swiper-container mySwiper select-none">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="image/Img1.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img
+          src="image/Img2.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img
+          src="image/Img3.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img
+          src="image/Img4.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="image/Img5.jpg" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="image/Img3.jpg" />
+      </div>
+    </div>
+    
+  </div>
+
+
+
+
+
+
   <!-- hero section -->
   <section class="max-w-5xl w-full mx-auto relative *:transition-all">
     <h3 class="text-2xl font-bold px-3">Product Page</h3>
@@ -102,8 +136,7 @@
 
     <!-- colgate section -->
     <div data-set="1" class="product active hidden">
-      <div id="Colgate"
-        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-1 transition-all cursor-pointer">
+      <div id="Colgate" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-1 transition-all cursor-pointer">
 
         <!-- card 1 -->
         <!-- <div class="card p-2 bg-gray-100 flex flex-col justify-between items-center gap-2 shadow-md transition-all">
@@ -164,10 +197,10 @@
 
 
 
-
+  <script src="https://unpkg.com/swiper@11.2.10/swiper-bundle.min.js"></script>
   <script src="scripts/data.js"></script>
   <script src="scripts/script.js"></script>
-  
+
 
 
 </body>

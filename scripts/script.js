@@ -11,6 +11,22 @@ let product = document.querySelectorAll('.product')
 
 
 //UI handlers
+let swiper = new Swiper(".mySwiper", {
+    effect: "slides",
+    grabCursor: true,
+    spaceBetween: 10,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    flipEffect: {
+        slideShadows: false,
+    },
+
+    loop: true,
+});
 function sectionNavigate() {
     buttons.forEach(btn => {
         const tabID = btn.dataset.set;
@@ -42,23 +58,6 @@ window.addEventListener("scroll", () => {
     } else {
         cart.classList.remove("is-fixed");
     }
-
-    // if (sectionRect.top <= 0) {
-    //     cart.style.position = "sticky";
-    //     cart.style.top = "0.5rem";
-    //     cart.style.right = "2rem";
-    //     cart.style.zIndex = "1000";
-    //     cart.style.background = "white";
-    //     cart.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
-    //     cart.style.borderRadius = "8px";
-    // } else {
-    //     cart.style.position = "";
-    //     cart.style.top = "";
-    //     cart.style.right = "";
-    //     cart.style.boxShadow = "";
-    //     cart.style.background = "";
-    //     cart.style.borderRadius = "";
-    // }
 });
 
 // cart opener 
@@ -326,7 +325,6 @@ function updateCartQty(id, change) {
     item.quantity += change;
     if (item.quantity <= 0) {
         cartItems = cartItems.filter(i => i.id !== id);
-        console.log(cartItems);
 
     }
     let totalQty = cartItems.reduce((sum, i) => sum + i.quantity, 0);
