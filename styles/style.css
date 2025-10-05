@@ -25,3 +25,26 @@
 .product.active{
     display: block;
 }
+.drop-down-cart::-webkit-scrollbar {
+  width: 6px;
+  height: 6px; 
+}
+
+.drop-down-cart::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.drop-down-cart::-webkit-scrollbar-thumb {
+  background: #575757;
+  border-radius: 5px;
+}
+
+.drop-down-cart::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.drop-down-cart::-webkit-scrollbar-button {
+  background: #49016b;
+  border-radius: 2px;
+}

@@ -8,7 +8,7 @@ dropDownCart = document.querySelector('.drop-down-cart')
 
 let buttons = document.querySelectorAll('.btn')
 let product = document.querySelectorAll('.product')
- 
+
 
 //UI handlers
 function sectionNavigate() {
@@ -58,7 +58,7 @@ cartIcon.addEventListener('click', () => {
         cartIconShow.innerHTML = "<p class='text-sm text-gray-400 p-3'>Cart is empty</p>";
         return;
     }
-    
+
 })
 
 
@@ -247,12 +247,12 @@ function cartPush(item, quantity) {
         disc = item.querySelector('.disc').textContent,
         id = item.querySelector('.id').textContent
 
-    // if(id == cartItems[id])
+
     const existingProduct = cartItems.find(item => item.id === id)
     console.log(!existingProduct);
     if (existingProduct) {
         existingProduct.quantity = quantity;
-    }else{
+    } else {
 
         cartItems.push({
             id,
@@ -265,7 +265,7 @@ function cartPush(item, quantity) {
         });
     }
     console.log(cartItems);
-    
+
 
     cartItemAdd();
 }
