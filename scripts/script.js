@@ -32,26 +32,36 @@ function sectionNavigate() {
 sectionNavigate()
 const cart = document.getElementById("cartWrapper");
 const stickySection = document.getElementById("stickySection");
+
+// cart position
 window.addEventListener("scroll", () => {
     const sectionRect = stickySection.getBoundingClientRect();
 
     if (sectionRect.top <= 0) {
-        cart.style.position = "fixed";
-        cart.style.top = "0.5rem";
-        cart.style.right = "2rem";
-        cart.style.zIndex = "1000";
-        cart.style.background = "white";
-        cart.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
-        cart.style.borderRadius = "8px";
+        cart.classList.add("is-fixed");
     } else {
-        cart.style.position = "";
-        cart.style.top = "";
-        cart.style.right = "";
-        cart.style.boxShadow = "";
-        cart.style.background = "";
-        cart.style.borderRadius = "";
+        cart.classList.remove("is-fixed");
     }
+
+    // if (sectionRect.top <= 0) {
+    //     cart.style.position = "sticky";
+    //     cart.style.top = "0.5rem";
+    //     cart.style.right = "2rem";
+    //     cart.style.zIndex = "1000";
+    //     cart.style.background = "white";
+    //     cart.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
+    //     cart.style.borderRadius = "8px";
+    // } else {
+    //     cart.style.position = "";
+    //     cart.style.top = "";
+    //     cart.style.right = "";
+    //     cart.style.boxShadow = "";
+    //     cart.style.background = "";
+    //     cart.style.borderRadius = "";
+    // }
 });
+
+// cart opener 
 cartIcon.addEventListener('click', () => {
     dropDownCart.classList.toggle('hidden')
     if (cartItems.length === 0) {
@@ -309,17 +319,17 @@ function cartItemAdd() {
     });
 }
 
-function updateCartQty(id, change){
-    let item = cartItems.find(i=> i.id === id)
+function updateCartQty(id, change) {
+    let item = cartItems.find(i => i.id === id)
     if (!item) return;
 
     item.quantity += change;
-    if(item.quantity <= 0){
-        cartItems = cartItems.filter(i=> i.id !== id);
+    if (item.quantity <= 0) {
+        cartItems = cartItems.filter(i => i.id !== id);
         console.log(cartItems);
-        
+
     }
-    let totalQty = cartItems.reduce((sum, i)=> sum + i.quantity, 0);
+    let totalQty = cartItems.reduce((sum, i) => sum + i.quantity, 0);
     shoppingCart.textContent = totalQty;
 
     cartItemAdd();

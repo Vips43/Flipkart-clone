@@ -10,14 +10,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <link rel="stylesheet" href="src/output.css">
-  <!-- <link rel="stylesheet" href="styles/style.css"> -->
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body class="bg-gray-200 overflow-x-hidden">
+<body class="bg-gray-200 overflow-x-hidden *:transition-all">
   <nav class="p-5 max-w-5xl mx-auto bg-white">
-    <main class="flex justify-between">
-      <div class="flex items-center">
-        <img src="image/Flipkar-logo.svg" alt="">
+    <main class="flex justify-between gap-1">
+      <div class="lg:hidden md:hidden text-lg flex items-center justify-center w-10 hover:bg-gray-200 cursor-pointer">
+        <i class="fa-solid fa-bars font-black"></i>
+      </div>
+      <div class="flex items-center w-fit h-8">
+        <img src="image/Flipkar-logo.svg" alt="" class="h-full">
       </div>
       <div class="lg:flex flex-1 md:flex sm:flex hidden items-center gap-2 hover:bg-gray-100 px-2">
         <input class="border flex-1 border-gray-400 rounded-md" type="text">
@@ -35,7 +38,7 @@
         </div>
 
 
-        <div id="cartWrapper" class="sticky top-0 right-0 z-20 flex items-center hover:bg-gray-200 px-2 transition-all">
+        <div id="cartWrapper" class="relative flex items-center hover:bg-gray-200 px-2 transition-all">
           <span id="cartIcon" class="material-symbols-outlined select-none cursor-pointer">shopping_cart</span>
           <sup id="shopping_cart">0</sup>
 
@@ -80,14 +83,15 @@
     </main>
   </nav>
 
-
-
-  <section class="max-w-5xl w-full mx-auto *:transition-all">
+  
+  <!-- hero section -->
+  <section class="max-w-5xl w-full mx-auto relative *:transition-all">
     <h3 class="text-2xl font-bold px-3">Product Page</h3>
-    <section id="stickySection" class="sticky top-0 bg-white z-10">
-      <main id="navigat" class="flex gap-5 mt-2 mb-1 px-2">
-        <button data-set="1" class="btn active text-gray-400 text-sm lg:text-base py-1 px-2 cursor-pointer">Colgate
-          Section</button>
+    <section id="stickySection" class="sticky top-0 mx-2 bg-white z-10">
+      <main id="navigat" class="flex gap-5 mt-2 mb-1">
+        <button data-set="1" class="btn active text-gray-400 text-sm lg:text-base py-1 px-2 cursor-pointer">
+          Colgate Section
+        </button>
         <button data-set="2" class="btn text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Mobile
           Section</button>
         <button data-set="3" class="btn  text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Footwear
@@ -99,7 +103,7 @@
     <!-- colgate section -->
     <div data-set="1" class="product active hidden">
       <div id="Colgate"
-        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:p-3 md:p-3 p-1 transition-all cursor-pointer">
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-1 transition-all cursor-pointer">
 
         <!-- card 1 -->
         <!-- <div class="card p-2 bg-gray-100 flex flex-col justify-between items-center gap-2 shadow-md transition-all">
@@ -141,13 +145,12 @@
 
       </div>
     </div>
-
     <!-- mobile section -->
     <div data-set="2" class="product hidden">
       <div id="Mobile" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-3 transition-all cursor-pointer">
       </div>
     </div>
-
+    <!-- footwear section  -->
     <div data-set="3" class="product hidden">
       <div id="Footwear" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-3 transition-all cursor-pointer">
 
