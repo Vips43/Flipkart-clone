@@ -91,12 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <button
             class="add-btn bg-blue-500 text-[0.6rem] h-6 py-1 px-2 self-end rounded-sm whitespace-nowrap hover:bg-blue-700 cursor-pointer" onclick='addToCart(this)'>Add to Cart</button>
 
-            <div class="qty-controls hidden justify-between items-stretch h-6 gap-1 rounded">
+            <div class="qty-controls hidden justify-between items-stretch h-6 gap-1 rounded select-none">
                 <div onclick="Dec(this)"
                   class="px-2 py-1 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
                   -
                 </div>
-                <div class="px-1 flex items-center justify-center text-[0.6rem] rounded-sm">0</div>
+                <div class="w-5 flex items-center justify-center text-[0.6rem] rounded-sm select-all">0</div>
                 <div onclick="Inc(this)"
                   class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
                   +
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   class="px-2 py-1 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
                   -
                 </div>
-                <div class="px-1 flex items-center justify-center text-[0.6rem] rounded-sm">0</div>
+                <div class="w-5 flex items-center justify-center text-[0.6rem] rounded-sm select-all">0</div>
                 <div onclick="Inc(this)"
                   class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
                   +
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   class="px-2 py-1 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
                   -
                 </div>
-                <div class="px-1 flex items-center justify-center text-[0.6rem] rounded-sm">0</div>
+                <div class="w-5 flex items-center justify-center text-[0.6rem] rounded-sm select-all">0</div>
                 <div onclick="Inc(this)"
                   class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
                   +
@@ -249,7 +249,7 @@ function cartPush(item, quantity) {
 
 
     const existingProduct = cartItems.find(item => item.id === id)
-    console.log(!existingProduct);
+    // console.log(!existingProduct);
     if (existingProduct) {
         existingProduct.quantity = quantity;
     } else {
@@ -264,7 +264,7 @@ function cartPush(item, quantity) {
             quantity
         });
     }
-    console.log(cartItems);
+    // console.log(cartItems);
 
 
     cartItemAdd();
@@ -304,5 +304,26 @@ function cartItemAdd() {
 
         cartIconShow.appendChild(div);
     });
+}
+
+function updateCartQty(id, change){
+    let item = cartItems.find(i=> i.id === id)
+    if (!item) return;
+
+    item.quantity += change;
+    if(item.quantity <= 0){
+        cartItems = cartItems.filter(i=> i.id !== id);
+        console.log(cartItems);
+        
+    }
+    let totalQty = cartItems.reduce((sum, i)=> sum + i.quantity, 0);
+    shoppingCart.textContent = totalQty;
+
+    cartItemAdd();
+
+
+    console.log(item);
+    
+    // item.quantity
 }
 
