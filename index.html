@@ -14,16 +14,17 @@
 </head>
 
 <body class="bg-gray-200 overflow-x-hidden">
-  <nav class="p-5 max-w-3xl mx-auto">
+  <nav class="p-5 max-w-5xl mx-auto">
     <main class="flex justify-between">
       <div class="flex items-center">
         <img src="image/Flipkar-logo.svg" alt="">
       </div>
-      <div class="lg:flex md:flex hidden items-center gap-2 hover:bg-gray-100 px-2">
-        <input class="border " type="text">
+      <div class="lg:flex flex-1 md:flex sm:flex hidden items-center gap-2 hover:bg-gray-100 px-2">
+        <input class="border flex-1 border-gray-400 rounded-md" type="text">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
-      <div class="flex ">
+
+      <div class="flex items-stretch gap-2">
 
         <div class="flex items-center hover:bg-gray-100 px-2">
           <i class="material-icons">download</i>
@@ -32,18 +33,22 @@
           <span class="material-symbols-outlined">account_circle</span>
           <span>Login</span>
         </div>
-        <div class=" relative flex items-center hover:bg-white px-2 transition-all">
+
+
+        <div id="cartWrapper" class="sticky top-0 right-0 z-20 flex items-center hover:bg-white px-2 transition-all">
           <span id="cartIcon" class="material-symbols-outlined select-none cursor-pointer">shopping_cart</span>
           <sup id="shopping_cart">0</sup>
 
-          <section class="drop-down-cart absolute top-10 right-0 z-50 bg-white max-w-2xl w-md shadow-md transition-all">
+          <section
+            class="drop-down-cart hidden absolute top-8 right-0 z-50 bg-white max-w-2xl w-md shadow-md transition-all select-none">
             <div id="cartIconShow" class="space-y-2  p-2">
 
-              <div class="border border-gray-100 px-2 flex flex-nowrap items-center gap-5">
+              <!-- <div class="border border-gray-100 px-2 flex flex-nowrap items-center gap-5">
                 <div class="h-14">
                   <img class="h-full" src="image/Col.jpeg" alt="">
                 </div>
                 <div class="flex flex-col leading-4">
+                  <span class="id hidden"></span>
                   <h3 class="uppercase font-semibold">colgate charcoal</h3>
                   <p class="font-mono">
                     <span class="text-xs font-bold">15,999₹</span>
@@ -63,32 +68,35 @@
                     +
                   </div>
                 </div>
-              </div>
+              </div> -->
 
             </div>
 
           </section>
 
-
         </div>
       </div>
     </main>
   </nav>
-  <section class="max-w-3xl w-full mx-auto *:transition-all">
+
+
+
+  <section class="max-w-5xl w-full mx-auto *:transition-all">
     <h3 class="text-2xl font-bold px-3">Product Page</h3>
-    <section class="sticky top-0 bg-white z-10">
+    <section id="stickySection" class="sticky top-0 bg-white z-10">
       <main id="navigat" class="flex gap-5 mt-2 mb-1 px-2">
-        <button data-set="1" class="btn active text-gray-400 text-sm lg:text-base py-1 px-2 cursor-pointer">Section
-          1</button>
-        <button data-set="2" class="btn text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Section 2</button>
-        <button data-set="3" class="btn  text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Section 3</button>
+        <button data-set="1" class="btn active text-gray-400 text-sm lg:text-base py-1 px-2 cursor-pointer">Colgate
+          Section</button>
+        <button data-set="2" class="btn text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Mobile
+          Section</button>
+        <button data-set="3" class="btn  text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Footwear
+          Section</button>
       </main>
       <hr>
     </section>
 
-
     <!-- colgate section -->
-    <div data-set="1" class="product activehidden">
+    <div data-set="1" class="product active hidden">
       <div id="Colgate"
         class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:p-3 md:p-3 p-1 transition-all cursor-pointer">
 
@@ -155,6 +163,8 @@
 
   <script src="scripts/data.js"></script>
   <script src="scripts/script.js"></script>
+  
+
 
 </body>
 
