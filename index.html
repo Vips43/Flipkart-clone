@@ -18,15 +18,15 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
 <body class="bg-gray-200 overflow-x-hidden *:transition-all">
   <nav class="p-5 max-w-5xl mx-auto bg-white">
     <main class="flex justify-between gap-1">
-      <div class="lg:hidden md:hidden text-lg flex items-center justify-center w-10 hover:bg-gray-200 cursor-pointer">
-        <i class="fa-solid fa-bars font-black"></i>
+      <div class="grow-1 flex items-center w-20 h-7">
+        <img src="image/Flipkar-logo.svg" alt="" class="h-7">
       </div>
-      <div class="flex items-center w-fit h-8">
-        <img src="image/Flipkar-logo.svg" alt="" class="h-full">
-      </div>
-      <div class="lg:flex flex-1 md:flex sm:flex hidden items-center gap-2 hover:bg-gray-100 px-2">
-        <input class="border flex-1 border-gray-400 rounded-md" type="text">
+      <div id="searchDiv" class="relative flex w-full items-center gap-2 px-2 transition-all">
+        <input class="input border flex-1 pl-3 py-1 border-gray-300 rounded-md w-auto placeholder:text-sm" placeholder="search for items..." type="text">
         <i class="fa-solid fa-magnifying-glass"></i>
+        <ul id="inputDropDown" class="absolute top-10 bg-white w-[100%] p-2 z-40 grid gap-0.5 transition-all">
+          <!-- <li class="p-1 bg-gray-100 hover:bg-gray-50">colgrate</li> -->
+        </ul>
       </div>
 
       <div class="flex items-stretch gap-2">
@@ -85,8 +85,10 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
     </main>
   </nav>
 
+  
+
   <div class="swiper-container mySwiper select-none">
-    <div class="swiper-wrapper">
+    <div class="swiper-wrapper cursor-grabbing">
       <div class="swiper-slide">
         <img src="image/Img1.jpg" />
       </div>
@@ -109,10 +111,6 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
     </div>
 
   </div>
-
-
-
-
 
 
   <!-- hero section -->

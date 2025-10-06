@@ -83,21 +83,17 @@ max-width: 1024px;
  width: 100%;
 }
 
-
-/* .footer{
-  width: 100%;
-  padding: .5rem;
-  background-color: #636371;
-  display: grid;
-  align-content: space-around;
+#inputDropDown{
+  width: calc(100% - 40px);
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-100px) scale(0);
+  opacity: 0;
+  z-index: -10;
 }
-.footer .foot{
-  padding: .2rem;
-  color: #BABABA;
-  font-size: .8rem;
-  
+#inputDropDown.active{
+  transform: translateY(0px) scale(1);
+  max-height: 500px;
+  opacity: 1;
+  z-index: 10;
 }
-.footer .foot ul{
-  padding: 1rem 0;
-  color: white;
-} */

@@ -1,7 +1,9 @@
 let Colgates = document.getElementById("Colgate")
 let Mobiles = document.getElementById("Mobile")
 let Footwear = document.getElementById("Footwear")
+let searchDiv = document.getElementById("searchDiv")
 shoppingCart = document.querySelector('#shopping_cart')
+inputDropDown = document.querySelector('#inputDropDown')
 cartIcon = document.querySelector('#cartIcon')
 cartIconShow = document.querySelector('#cartIconShow')
 dropDownCart = document.querySelector('.drop-down-cart')
@@ -78,9 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     colgateData.map(e => {
         Colgates.innerHTML +=
-            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
-        <div class="w-full border border-gray-100">
-        <img class="w-full" src=${e.img} alt="">
+            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg ">
+        <div class="w-full border border-gray-100 overflow-hidden">
+        <img class="w-full hover:scale-[1.5]" src=${e.img} alt="">
         </div>
         <div class="flex flex-col w-full">
         <p class="grow">
@@ -332,4 +334,69 @@ function updateCartQty(id, change) {
 
     cartItemAdd();
 }
+
+const search = (data, input) => {
+  return data
+    .filter(e => e.name.toLowerCase().includes(input.toLowerCase()))
+    .map(e => e.name);
+};
+
+let footwearSearch = input => search(footwearData, input);
+let mobileSearch   = input => search(mobileData, input);
+let colgateSearch  = input => search(colgateData, input);
+
+
+// function colSearch(input){
+//     return colgateData.filter(e => e.name.toLowerCase().includes(input.toLowerCase())).map(e=> e.name);
+// }
+
+// searchData()
+searchDiv.addEventListener('click', (e) => {
+    if (e.target.tagName === 'INPUT') {
+        inputDropDown.classList.add('active')
+        inputDropDown.innerHTML = `<li>search for item...</li>`
+        
+        e.target.addEventListener('input', (i) => {
+            e.stopPropagation();
+            inputDropDown.innerHTML = '';
+            let inputValue = e.target.value.trim()
+
+              const result = [
+                ...colgateSearch(inputValue),
+                ...mobileSearch(inputValue),
+                ...footwearSearch(inputValue)
+            ];
+            result.forEach(name=> { 
+                if(e.target.value === ''){
+                    inputDropDown.innerHTML = `<li>search for item...</li>`
+                    return;
+                }
+                const li = document.createElement('li')
+                li.textContent = name;
+                li.classList = "p-1 bg-gray-100 hover:bg-gray-50 cursor-pointer"
+                
+                li.addEventListener('click',()=>{
+                    e.target.value = li.textContent;
+                    inputDropDown.classList.remove('active')
+                })
+                inputDropDown.appendChild(li)
+            }
+        );
+            
+            
+            
+            
+        })
+    }
+    if (e.target.tagName === 'I') {
+        console.log('i am icon');
+    }
+})
+
+document.addEventListener('click', (e) => {
+    if (!searchDiv.contains(e.target)) {
+        inputDropDown.classList.remove('active')
+    }
+})
+
 
