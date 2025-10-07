@@ -22,9 +22,11 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
         <img src="image/Flipkar-logo.svg" alt="" class="h-7">
       </div>
       <div id="searchDiv" class="relative flex w-full items-center gap-2 px-2 transition-all">
-        <input class="input border flex-1 pl-3 py-1 border-gray-300 rounded-md w-auto placeholder:text-sm" placeholder="search for items..." type="text">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <ul id="inputDropDown" class="absolute top-10 bg-white w-[100%] p-2 z-40 grid gap-0.5 transition-all">
+        <input class="inputTag border flex-1 pl-3 py-1 border-gray-300 rounded-md w-auto placeholder:text-sm" placeholder="search for items..." type="text">
+        <div class="p-2 rounded-full grid place-items-center hover:bg-gray-100">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <ul id="inputDropDown" class="absolute top-10 bg-white w-[100%] p-2 grid gap-0.5 transition-all">
           <!-- <li class="p-1 bg-gray-100 hover:bg-gray-50">colgrate</li> -->
         </ul>
       </div>
@@ -194,49 +196,49 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
 
 
 
-  <footer class="footer bg-[#636371] p-5 lg:flex flex-wrap md:flex gap-3 mt-10">
+  <footer class="footer bg-[#636371] p-5 lg:grid grid-cols-4 md:grid gap-3 space-y-2 lg:scroll-py-0 md:space-y-0 mt-10">
     <div class="bg-[#51515e] p-2 rounded-lg">
       <h3 class="font-bold">About</h3>
       <ul class="ml-2">
-        <li>Contact-us</li>
-        <li>About-us</li>
-        <li>Carriers</li>
-        <li>Flipkart-stories</li>
-        <li>Press</li>
-        <li>Corporate Information</li>
+        <li class="hover:underline">Contact-us</li>
+        <li class="hover:underline">About-us</li>
+        <li class="hover:underline">Carriers</li>
+        <li class="hover:underline">Flipkart-stories</li>
+        <li class="hover:underline">Press</li>
+        <li class="hover:underline">Corporate Information</li>
       </ul>
     </div>
     <div class="bg-[#51515e] p-2 rounded-lg">
       <h3 class="font-bold">Group companies</h3>
       <ul class="ml-2">
-        <li>Myntra</li>
-        <li>Cleartrip</li>
-        <li>Shopsy</li>
+        <li class="hover:underline">Myntra</li>
+        <li class="hover:underline">Cleartrip</li>
+        <li class="hover:underline">Shopsy</li>
       </ul>
     </div>
     <div class="bg-[#51515e] p-2 rounded-lg">
       <h3 class="font-bold">Help</h3>
       <ul class="ml-2">
-        <li>Payments</li>
-        <li>Shipping</li>
-        <li>Cancellations & returns</li>
-        <li>FAQ</li>
+        <li class="hover:underline">Payments</li>
+        <li class="hover:underline">Shipping</li>
+        <li class="hover:underline">Cancellations & returns</li>
+        <li class="hover:underline">FAQ</li>
       </ul>
     </div>
     <div class="bg-[#51515e] p-2 rounded-lg">
       <h3 class="font-bold">Consumer Policy</h3>
       <ul class="ml-2">
-        <li>Cancellations & returns</li>
-        <li>Terms of use</li>
-        <li>Policies</li>
-        <li>Security</li>
-        <li>Site map</li>
-        <li>Grievances</li>
-        <li>EPR compliances</li>
+        <li class="hover:underline">Cancellations & returns</li>
+        <li class="hover:underline">Terms of use</li>
+        <li class="hover:underline">Policies</li>
+        <li class="hover:underline">Security</li>
+        <li class="hover:underline">Site map</li>
+        <li class="hover:underline">Grievances</li>
+        <li class="hover:underline">EPR compliances</li>
       </ul>
     </div>
 
-    <div class="bg-[#51515e] p-2 rounded-lg flex-1">
+    <div class="bg-[#51515e] p-2 rounded-lg col-span-2">
       <h3 class="font-bold">Mail Us</h3>
       <ul class="ml-2">
         <li>flipkart internet private limited <br>
@@ -245,7 +247,7 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
         </li>
       </ul>
     </div>
-    <div class="bg-[#51515e] p-2 rounded-lg flex-1">
+    <div class="bg-[#51515e] p-2 rounded-lg col-span-2">
       <h3 class="font-bold">Registered office Address</h3>
       <ul class="ml-2">
         <li>flipkart internet private limited <br>

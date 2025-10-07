@@ -7,6 +7,7 @@ inputDropDown = document.querySelector('#inputDropDown')
 cartIcon = document.querySelector('#cartIcon')
 cartIconShow = document.querySelector('#cartIconShow')
 dropDownCart = document.querySelector('.drop-down-cart')
+inputTag = document.querySelector('.inputTag')
 
 let buttons = document.querySelectorAll('.btn')
 let product = document.querySelectorAll('.product')
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Colgates.innerHTML +=
             `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg ">
         <div class="w-full border border-gray-100 overflow-hidden">
-        <img class="w-full hover:scale-[1.5]" src=${e.img} alt="">
+        <img class="w-full hover:scale-[1.1] transition-all" src=${e.img} alt="">
         </div>
         <div class="flex flex-col w-full">
         <p class="grow">
@@ -121,9 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     mobileData.map(e => {
         Mobiles.innerHTML +=
-            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
-            <div class="w-full border border-gray-100">
-                <img class="w-full" src=${e.img} alt="">
+            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg ">
+            <div class="w-full border border-gray-100  overflow-hidden">
+                <img class="w-full hover:scale-[1.1] transition-all" src=${e.img} alt="">
             </div>
             <div class="flex flex-col w-full">
             <p class="grow">
@@ -163,9 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     footwearData.map(e => {
         Footwear.innerHTML +=
-            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md hover:scale-[0.99] transition-all rounded-lg ">
-            <div class="w-full border border-gray-100">
-                <img class="w-full" src=${e.img} alt="">
+            `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md rounded-lg ">
+            <div class="w-full border border-gray-100  overflow-hidden">
+                <img class="w-full hover:scale-[1.1] transition-all" src=${e.img} alt="">
             </div>
             <div class="flex flex-col w-full">
             <p class="grow">
@@ -336,60 +337,102 @@ function updateCartQty(id, change) {
 }
 
 const search = (data, input) => {
-  return data
-    .filter(e => e.name.toLowerCase().includes(input.toLowerCase()))
-    .map(e => e.name);
+    return data
+        .filter(e => e.name.toLowerCase().includes(input.toLowerCase()))
+
 };
 
 let footwearSearch = input => search(footwearData, input);
-let mobileSearch   = input => search(mobileData, input);
-let colgateSearch  = input => search(colgateData, input);
+let mobileSearch = input => search(mobileData, input);
+let colgateSearch = input => search(colgateData, input);
 
 
-// function colSearch(input){
-//     return colgateData.filter(e => e.name.toLowerCase().includes(input.toLowerCase())).map(e=> e.name);
-// }
-
-// searchData()
 searchDiv.addEventListener('click', (e) => {
     if (e.target.tagName === 'INPUT') {
         inputDropDown.classList.add('active')
         inputDropDown.innerHTML = `<li>search for item...</li>`
-        
-        e.target.addEventListener('input', (i) => {
+
+        e.target.addEventListener('input', () => {
             e.stopPropagation();
             inputDropDown.innerHTML = '';
             let inputValue = e.target.value.trim()
 
-              const result = [
-                ...colgateSearch(inputValue),
-                ...mobileSearch(inputValue),
-                ...footwearSearch(inputValue)
+            const result = [
+                ...colgateSearch(inputValue).map(e => e.name),
+                ...mobileSearch(inputValue).map(e => e.name),
+                ...footwearSearch(inputValue).map(e => e.name)
             ];
-            result.forEach(name=> { 
-                if(e.target.value === ''){
+            result.forEach(name => {
+                if (e.target.value === '') {
                     inputDropDown.innerHTML = `<li>search for item...</li>`
                     return;
                 }
                 const li = document.createElement('li')
                 li.textContent = name;
                 li.classList = "p-1 bg-gray-100 hover:bg-gray-50 cursor-pointer"
-                
-                li.addEventListener('click',()=>{
+
+                li.addEventListener('click', () => {
                     e.target.value = li.textContent;
                     inputDropDown.classList.remove('active')
                 })
                 inputDropDown.appendChild(li)
             }
-        );
-            
-            
-            
-            
+            );
         })
     }
+
+
     if (e.target.tagName === 'I') {
-        console.log('i am icon');
+        let inputValue = inputTag.value;
+
+        const result = [
+            ...colgateSearch(inputValue),
+            ...mobileSearch(inputValue),
+            ...footwearSearch(inputValue)
+        ];
+        Colgates.innerHTML = ''
+        result.map(e => {
+            Colgates.innerHTML +=
+                `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg ">
+        <div class="w-full border border-gray-100 overflow-hidden">
+        <img class="w-full hover:scale-[1.1] transition-all" src=${e.img} alt="">
+        </div>
+        <div class="flex flex-col w-full">
+        <p class="grow">
+            <span class='id hidden'>${e.id}</span>
+            <span class="prName font-semibold">
+                ${e.name} 
+            </span> <br>
+            </p>
+            <div class="flex justify-between flex-wrap items-center">
+            <p class='flex gap-2'>
+                <span class="old-price text-xs text-gray-400 line-through">
+                ${e.oldPrice}₹</span>
+            <span class="curr-price text-xs md:text-sm lg:text-base font-bold">${e.currPrice}₹</span>
+            <span class="disc text-sm text-green-500">${e.disc}%</span>
+            </p>
+            
+            <button
+            class="add-btn bg-blue-500 text-[0.6rem] h-6 py-1 px-2 self-end rounded-sm whitespace-nowrap hover:bg-blue-700 cursor-pointer" onclick='addToCart(this)'>Add to Cart</button>
+
+            <div class="qty-controls hidden justify-between items-stretch h-6 gap-1 rounded select-none">
+                <div onclick="Dec(this)"
+                  class="px-2 py-1 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
+                  -
+                </div>
+                <div class="w-5 flex items-center justify-center text-[0.6rem] rounded-sm select-all">0</div>
+                <div onclick="Inc(this)"
+                  class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
+                  +
+                </div>
+              </div>
+
+
+            </div>
+            </div>
+        </div>`
+        })
+
     }
 })
 
