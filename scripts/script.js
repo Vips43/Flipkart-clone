@@ -43,7 +43,6 @@ function sectionNavigate() {
                 if (prID === tabID) {
                     pr.classList.add('active')
                 }
-
             })
         })
     })
@@ -441,5 +440,3 @@ document.addEventListener('click', (e) => {
         inputDropDown.classList.remove('active')
     }
 })
-
-
