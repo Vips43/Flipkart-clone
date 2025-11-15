@@ -1,3 +1,4 @@
+
 * {
  box-sizing: border-box;
 }
@@ -66,7 +67,7 @@
 .swiper-container {
  width: 100%;
 max-width: 1024px;
- margin: 1rem auto;
+ margin: .5rem auto;
  overflow: hidden;
  /* padding-top: 50px;
  padding-bottom: 50px; */

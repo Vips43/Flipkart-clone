@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/style.css">
-  <title>E_Commer</title>
+  <!-- <link rel="stylesheet" href="styles/style.css"> -->
+  <title>E_Commerce</title>
   <link rel="icon" type="image/x-icon" href="/image/online-store.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -23,7 +23,8 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
         <img src="image/Flipkar-logo.svg" alt="" class="h-7">
       </div>
       <div id="searchDiv" class="relative flex w-full items-center gap-2 px-2 transition-all">
-        <input class="inputTag border flex-1 pl-3 py-1 border-gray-300 rounded-md w-auto placeholder:text-sm" placeholder="search for items..." type="text">
+        <input class="inputTag border flex-1 pl-3 py-1 border-gray-300 rounded-md w-auto placeholder:text-sm"
+          placeholder="search for items..." type="text">
         <div class="p-2 rounded-full grid place-items-center hover:bg-gray-100">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
@@ -37,9 +38,9 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
         <div class="flex items-center hover:bg-gray-100 px-2">
           <i class="material-icons">download</i>
         </div>
-        <div class="flex items-center hover:bg-gray-100 px-2">
-          <span class="material-symbols-outlined">account_circle</span>
-          <span>Login</span>
+        <div class=" hover:bg-gray-100 px-2">
+          <a class="flex items-center" href="./backend/login/signup.html"><span class="material-symbols-outlined">account_circle</span>
+          <span>Login</span></a>
         </div>
 
 
@@ -48,9 +49,9 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
           <sup id="shopping_cart">0</sup>
 
           <section
-            class="drop-down-cart absolute hidden max-h-51 top-8 right-0 z-50 bg-gray-200 max-w-2xl w-md shadow-md transition-all overflow-y-auto select-none">
+            class="drop-down-cart hidden absolute max-h-51 top-8 right-0 z-50 bg-gray-200 max-w-2xl w-md shadow-md transition-all overflow-y-auto select-none">
+            <button onclick="cartCleaner()" class="clearBtn capitalize bg-amber-900 p-1 px-2 text-white rounded-md text-xs">clear cart</button>
             <div id="cartIconShow" class="space-y-2 p-2">
-
               <!-- <div class="border border-gray-100 px-2 flex flex-nowrap items-center gap-5 rounded-lg">
                 <div class="h-14">
                   <img class="h-full" src="image/Col.jpeg" alt="">
@@ -77,42 +78,54 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
                   </div>
                 </div>
               </div>  -->
-
-
             </div>
-
+            <div class="pricingSection">
+              <div class="grid gap-1 py-2">
+                <h1 class="flex justify-between px-3 text-sm bg-gray-300"><span>Amt.</span><span id="Amt">2000</span></h1>
+                <h1 class="flex justify-between px-3 text-sm bg-gray-300"><span>GST</span><span id="gst">18%</span></h1>
+                <h1 class="flex justify-between px-3 text-sm bg-gray-300 font-bold"><span>Total</span><span id="total">2200</span></h1>
+              </div>
+            </div>
           </section>
-
         </div>
       </div>
     </main>
   </nav>
 
-  
-
   <div class="swiper-container mySwiper select-none">
     <div class="swiper-wrapper cursor-grabbing">
       <div class="swiper-slide">
-        <img src="image/Img1.jpg" />
+        <img src="image/img1.jpg" />
       </div>
       <div class="swiper-slide">
-        <img src="image/Img2.jpg" />
+        <img src="image/img3.jpeg" />
       </div>
       <div class="swiper-slide">
-        <img src="image/Img3.jpg" />
+        <img src="image/img2.jpeg" />
       </div>
       <div class="swiper-slide">
-        <img src="image/Img4.jpg" />
+        <img src="image/img4.jpeg" />
       </div>
       <div class="swiper-slide">
-        <img src="image/Img5.jpg" />
+        <img src="image/img5.jpeg" />
       </div>
 
       <div class="swiper-slide">
-        <img src="image/Img3.jpg" />
+        <img src="image/img6.jpeg" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="image/img7.jpg" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="image/img8.jpeg" />
+      </div>
+
+      <div class="swiper-slide">
+        <img src="image/img9.jpeg" />
       </div>
     </div>
-
   </div>
 
 
@@ -124,79 +137,62 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
         <button data-set="1" class="btn active text-gray-400 text-sm lg:text-base py-1 px-2 cursor-pointer">
           Colgate Section
         </button>
-        <button data-set="2" class="btn text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Mobile
-          Section</button>
-        <button data-set="3" class="btn  text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Footwear
-          Section</button>
+        <button data-set="2" class="btn text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">
+          Mobile Section
+        </button>
+        <button data-set="3" class="btn  text-gray-400 py-1 px-2 text-sm lg:text-base cursor-pointer">Footwear Section
+        </button>
       </main>
       <hr>
     </section>
 
     <!-- colgate section -->
     <div data-set="1" class="product active hidden">
-      <div id="Colgate" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-2 lg:px-3 transition-all cursor-pointer">
-
+      <div id="Colgate"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-2 lg:px-3 transition-all cursor-pointer">
         <!-- card 1 -->
-        <!-- <div class="card p-2 bg-gray-100 flex flex-col justify-between items-center gap-2 shadow-md transition-all">
-          <div class="w-full border border-gray-200 hover:scale-[0.99] transition-all">
-            <img class="w-full" src='image/mobiles/mob10.jpg' alt="">
+        <!-- <div
+          class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg">
+          <div class="w-full border border-gray-100 overflow-hidden">
+            <img class="w-full hover:scale-[1.1] transition-all" src="${e.img}" alt="${e.name}">
           </div>
           <div class="flex flex-col w-full">
-            <span class="text-xs font-semibold text-gray-500">BRUTON</span>
             <p class="grow">
-              <span class="font-semibold text-[clamp(1rem,2vw+.6rem,1rem)]">realme NARZO 80x 5G</span> <br>
+              <span class="id hidden">${e.id}</span>
+              ${e.brand ? `<span class="block text-xs text-gray-400">${e.brand}</span>` : ""}
+              <span class="prName font-semibold">${e.name}</span>
             </p>
-
-            <div class="flex justify-between flex-wrap items-center">
-              <p>
-                <span class="text-xs text-gray-400 line-through">11,498₹</span>
-                <span class="text-xs font-bold">'15,999₹</span>
-                <span class="text-xs font-bold text-green-500">28%</span>
+            <div class="flex justify-between flex-wrap items-center mt-1">
+              <p class="flex gap-2">
+                <span class="old-price text-xs text-gray-400 line-through">${e.oldPrice}₹</span>
+                <span class="curr-price text-xs md:text-sm lg:text-base font-bold">${e.currPrice}₹</span>
+                <span class="disc text-sm text-green-500">${e.disc}%</span>
               </p>
-
               <button
-                class="add-btn hidden bg-blue-500 text-[0.6rem] font-semibold py-1 px-2 h-fit self-end rounded-sm whitespace-nowrap hover:bg-blue-700 cursor-pointer">
+                class="add-btn bg-blue-500 text-[0.6rem] h-6 py-1 px-2 self-end rounded-sm hover:bg-blue-700 cursor-pointer"
+                onclick="addToCart(this)">
                 Add to Cart
               </button>
-
-              <div class="qty-controls flex justify-between items-stretch h-6 gap-1 rounded">
-                <div
-                  class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
-                  -
-                </div>
-                <div class="px-1 flex items-center justify-center text-[0.6rem] rounded-sm">0</div>
-                <div
-                  class="px-2 font-bold flex items-center justify-center text-[0.6rem] border bg-blue-600 text-white cursor-pointer rounded-sm">
-                  +
-                </div>
-              </div>
             </div>
           </div>
         </div> -->
-
       </div>
     </div>
     <!-- mobile section -->
     <div data-set="2" class="product hidden">
-      <div id="Mobile" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-2 lg:px-3 transition-all cursor-pointer">
+      <div id="Mobile"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-2 lg:px-3 transition-all cursor-pointer">
       </div>
     </div>
     <!-- footwear section  -->
     <div data-set="3" class="product hidden">
-      <div id="Footwear" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-2 lg:px-3 transition-all cursor-pointer">
-
-
-
-
-
+      <div id="Footwear"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 p-2 lg:px-3 transition-all cursor-pointer">
       </div>
     </div>
   </section>
 
-
-
-
-
+  <!-- footer section -->
   <footer class="footer bg-[#636371] p-5 lg:grid grid-cols-4 md:grid gap-3 space-y-2 lg:scroll-py-0 md:space-y-0 mt-10">
     <div class="bg-[#51515e] p-2 rounded-lg">
       <h3 class="font-bold">About</h3>
@@ -259,12 +255,13 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
       </ul>
     </div>
     <hr>
-
-
   </footer>
+
+  <ul class="mobdata"></ul>
+
+
   <script src="https://unpkg.com/swiper@11.2.10/swiper-bundle.min.js"></script>
-  <script src="scripts/data.js"></script>
-  <script src="scripts/script.js"></script>
+  <script type="module" src="scripts/script.js"></script>
 
 
 
