@@ -15,7 +15,7 @@ let searchDiv = document.getElementById("searchDiv"),
   pricingSection = document.querySelector('.pricingSection')
 let buttons = document.querySelectorAll('.btn')
 let product = document.querySelectorAll('.product')
-const wishlistContainer = document.getElementById('wishlistContainer')
+const wishlistBody = document.getElementById('wishlistContainer')
 
 //UI handlers
 let swiper = new Swiper(".mySwiper", {
@@ -324,12 +324,12 @@ document.addEventListener("click", (e) => {
 
 
 document.getElementById('closeIcon').addEventListener("click", () => {
-  wishlistContainer.style.display = 'none'
+  wishlistBody.style.display = 'none'
 })
 
 function wishListProducts() {
 
-  if(!heartCard) return;
+  if (!heartCard) return;
 
   const favProduct = {
     id: heartCard.querySelector('.id').textContent,
@@ -338,7 +338,7 @@ function wishListProducts() {
     currPrice: heartCard.querySelector(".curr-price").textContent
   };
 
-  if(!wishList.some(item=> item.id === favProduct.id)){
+  if (!wishList.some(item => item.id === favProduct.id)) {
     wishList.push(favProduct);
   }
 
@@ -348,12 +348,12 @@ function wishListProducts() {
   const wishListContainer = document.getElementById('wishListContainer')
 
   wishListContainer.innerHTML = '';
-  
-  wishList.forEach(list=> {
+
+  wishList.forEach(list => {
     const div = document.createElement("div")
     div.className = "border border-rose-200 p-2";
-    div.innerHTML = 
-    `<div class="p-2 border border-gray-200">
+    div.innerHTML =
+      `<div class="p-2 border border-gray-200">
         <img src="${list.img}" alt="">
       </div>
       <div class="text-center ">
@@ -362,7 +362,14 @@ function wishListProducts() {
       <div>
         ${list.currPrice}
       </div>`
-      wishListContainer.append(div)
-    })
+    wishListContainer.append(div)
+  })
 }
+const emptyWishlist = document.getElementById("emptyWishlist")
+emptyWishlist.addEventListener("click", ()=> {
+  wishList = []
+  console.log('clicked');
+  wishListContainer.innerHTML = '';
+
+})
 
