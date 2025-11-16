@@ -15,7 +15,7 @@ let searchDiv = document.getElementById("searchDiv"),
   pricingSection = document.querySelector('.pricingSection')
 let buttons = document.querySelectorAll('.btn')
 let product = document.querySelectorAll('.product')
-
+const wishlistContainer = document.getElementById('wishlistContainer')
 
 //UI handlers
 let swiper = new Swiper(".mySwiper", {
@@ -118,6 +118,12 @@ if (loggedUser) {
     localStorage.removeItem("user");
     window.location.reload();
   })
+
+  const wishlistIcon = dropdown.querySelector("div i")
+  wishlistIcon.addEventListener("click", () => {
+    wishlistContainer.style.display = 'flex'
+  })
+
 }
 
 
@@ -302,15 +308,61 @@ function cartPricing() {
   });
 }
 
+let wishList = [];
+
+let heartCard;
+
 document.addEventListener("click", (e) => {
   const heart = e.target.closest(".icon");
   if (!heart) return;
   heart.classList.toggle("active-heart")
+
+  heartCard = heart.closest(".card");
+
+  wishListProducts()
 })
 
-let wishList = [];
 
-console.log(wishList);
-function wishListProducts(){
+document.getElementById('closeIcon').addEventListener("click", () => {
+  wishlistContainer.style.display = 'none'
+})
+
+function wishListProducts() {
+
+  if(!heartCard) return;
+
+  const favProduct = {
+    id: heartCard.querySelector('.id').textContent,
+    prName: heartCard.querySelector('.prName').textContent,
+    img: heartCard.querySelector("img").src,
+    currPrice: heartCard.querySelector(".curr-price").textContent
+  };
+
+  if(!wishList.some(item=> item.id === favProduct.id)){
+    wishList.push(favProduct);
+  }
+
+  // wishList.push(favProduct)
+  console.log(wishList)
+
+  const wishListContainer = document.getElementById('wishListContainer')
+
+  wishListContainer.innerHTML = '';
   
+  wishList.forEach(list=> {
+    const div = document.createElement("div")
+    div.className = "border border-rose-200 p-2";
+    div.innerHTML = 
+    `<div class="p-2 border border-gray-200">
+        <img src="${list.img}" alt="">
+      </div>
+      <div class="text-center ">
+        ${list.prName}
+      </div>
+      <div>
+        ${list.currPrice}
+      </div>`
+      wishListContainer.append(div)
+    })
 }
+

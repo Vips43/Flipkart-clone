@@ -151,56 +151,27 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
   </div>
 
   <!-- wishlist tray -->
-  <div class="absolute top-0 left-0 bg-gray-900/70 w-full z-50 min-h-screen flex justify-center items-center">
-    <div class="relative w-11/12 p-5 bg-white border-2 rounded-lg overflow-hidden">
-      <div class="absolute top-0 right-0 bg-red-500 text-sm px-0.5"><i class="fa-solid fa-x"></i></div>
-      <div class="flex justify-between items-center p-2 border border-gray-200">
+  <div id="wishlistContainer" class="absolute top-0 left-0 bg-gray-900/70 w-full z-50 min-h-screen flex justify-center items-center">
+    <div class="relative w-11/12 p-5 bg-white border-2 rounded-lg rounded-tr-none overflow-hidden">
+      <div id="closeIcon" class="absolute top-0 right-0 bg-red-500 text-sm px-0.5"><i class="fa-solid fa-x"></i></div>
+      <div class="flex justify-between items-center p-2 border border-rose-200">
         <h3 class="text-2xl text-center">Wishlisted items</h3>
         <span>Clear wishlist 🗑️</span>
       </div>
-      <div class="border grid gap-2 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3">
-        <div class="border p-2">
-          <div>
-            product name
-          </div>
-          <div>
+      <div id="wishListContainer" class="mt-0.5 border border-rose-100 grid gap-2 grid-cols-2 lg:grid-cols-5 sm:grid-cols-3">
+               
+        <div class="border border-rose-200 p-2">
+          <div class="p-2 border border-gray-200">
             <img src="image/Col.jpeg" alt="">
           </div>
-          <div>
-            product desc
+          <div class="text-center ">
+            product name
           </div>
           <div>
             price
           </div>
         </div>
-        <div class="border p-2">
-          <div>
-            product name
-          </div>
-          <div>
-            <img src="image/Col.jpeg" alt="">
-          </div>
-          <div>
-            product desc
-          </div>
-          <div>
-            price
-          </div>
-        </div>
-        <div class="border p-2">
-          <div>
-            product name
-          </div>
-          <div>
-            <img src="image/Col.jpeg" alt="">
-          </div>
-          <div>
-            product desc
-          </div>
-          <div>
-            price
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
