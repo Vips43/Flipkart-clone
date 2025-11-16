@@ -24,7 +24,7 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
       </div>
       <div id="searchDiv" class="relative flex w-full items-center gap-2 px-2 transition-all">
         <input class="inputTag border flex-1 pl-3 py-1 border-gray-300 rounded-md w-auto placeholder:text-sm"
-          placeholder="search for items..." type="text">
+          placeholder="search for items..." type="search">
         <div class="p-2 rounded-full grid place-items-center hover:bg-gray-100">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
@@ -34,14 +34,23 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
       </div>
 
       <div class="flex items-stretch gap-2">
-
         <div class="flex items-center hover:bg-gray-100 px-2">
           <i class="material-icons">download</i>
         </div>
-        <div class=" hover:bg-gray-100 px-2">
-          <a class="flex items-center" href="./backend/login/signup.html"><span class="material-symbols-outlined">account_circle</span>
-          <span>Login</span></a>
+        <div id="userAc" class="relative hover:bg-gray-100 px-2 flex">
+          <a class="flex items-center gap-1" href="./backend/login/signup.html">
+
+            <span class="material-symbols-outlined">account_circle</span>
+            <span class="text-xs whitespace-nowrap">Login</span>
+
+            <div class="hidden absolute -bottom-17 left-0 w-full z-50 bg-gray-200 p-2">
+              <span class="text-xs">wanna logout?</span>
+              <button class="border bg-red-200 rounded-xl p-1 text-xs">Logout</button>
+            </div>
+
+          </a>
         </div>
+
 
 
         <div id="cartWrapper" class="relative flex items-center hover:bg-gray-200 px-2 transition-all">
@@ -50,7 +59,8 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
 
           <section
             class="drop-down-cart hidden absolute max-h-51 top-8 right-0 z-50 bg-gray-200 max-w-2xl w-md shadow-md transition-all overflow-y-auto select-none">
-            <button onclick="cartCleaner()" class="clearBtn capitalize bg-amber-900 p-1 px-2 text-white rounded-md text-xs">clear cart</button>
+            <button onclick="cartCleaner()"
+              class="clearBtn capitalize bg-amber-900 p-1 px-2 text-white rounded-md text-xs">clear cart</button>
             <div id="cartIconShow" class="space-y-2 p-2">
               <!-- <div class="border border-gray-100 px-2 flex flex-nowrap items-center gap-5 rounded-lg">
                 <div class="h-14">
@@ -81,9 +91,11 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
             </div>
             <div class="pricingSection">
               <div class="grid gap-1 py-2">
-                <h1 class="flex justify-between px-3 text-sm bg-gray-300"><span>Amt.</span><span id="Amt">2000</span></h1>
+                <h1 class="flex justify-between px-3 text-sm bg-gray-300"><span>Amt.</span><span id="Amt">2000</span>
+                </h1>
                 <h1 class="flex justify-between px-3 text-sm bg-gray-300"><span>GST</span><span id="gst">18%</span></h1>
-                <h1 class="flex justify-between px-3 text-sm bg-gray-300 font-bold"><span>Total</span><span id="total">2200</span></h1>
+                <h1 class="flex justify-between px-3 text-sm bg-gray-300 font-bold"><span>Total</span><span
+                    id="total">2200</span></h1>
               </div>
             </div>
           </section>
@@ -153,13 +165,16 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
         <!-- card 1 -->
         <!-- <div
           class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg">
-          <div class="w-full border border-gray-100 overflow-hidden">
-            <img class="w-full hover:scale-[1.1] transition-all" src="${e.img}" alt="${e.name}">
+          <div class="relative w-full border border-gray-100 overflow-hidden">
+            <img class="w-full hover:scale-[1.1] transition-all" src="image/Col.jpeg" alt="${e.name}">
+            <div class="icon absolute top-3 right-3">
+              <i class="fa-solid fa-heart text-white text-shadow-[-0.5px_-0.5px_2px_grey,0.5px_0.5px_2px_grey] hover:text-red-500"></i>
+            </div>
           </div>
           <div class="flex flex-col w-full">
             <p class="grow">
               <span class="id hidden">${e.id}</span>
-              ${e.brand ? `<span class="block text-xs text-gray-400">${e.brand}</span>` : ""}
+              ${e.brand ? `<span class="block text-xs text-yellow-400 text-shadow-gray-900 text-shadow-2xs">${e.brand}</span>` : ""}
               <span class="prName font-semibold">${e.name}</span>
             </p>
             <div class="flex justify-between flex-wrap items-center mt-1">
@@ -176,6 +191,8 @@ https://unpkg.com/swiper@11.2.10/swiper-bundle.min.css" />
             </div>
           </div>
         </div> -->
+
+        <!-- card 1 close -->
       </div>
     </div>
     <!-- mobile section -->

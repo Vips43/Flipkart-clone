@@ -35,6 +35,7 @@ if (loginForm) {
                 return;
             }
 
+            localStorage.setItem("user", JSON.stringify(data.user))
             alert("login successful!");
             window.location.href = "../../index.html"
 
@@ -47,6 +48,8 @@ if (loginForm) {
     });
 
 }
+
+
 
 
 
@@ -99,3 +102,4 @@ if (signupForm) {
     });
 
 }
+

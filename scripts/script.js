@@ -5,6 +5,7 @@ let Mobile = document.getElementById("Mobile")
 let Footwear = document.getElementById("Footwear")
 let searchDiv = document.getElementById("searchDiv"),
   shoppingCart = document.getElementById('shopping_cart'),
+  userAc = document.getElementById('userAc'),
   inputDropDown = document.querySelector('#inputDropDown'),
   cartIcon = document.querySelector('#cartIcon'),
   cartIconShow = document.querySelector('#cartIconShow'),
@@ -66,6 +67,46 @@ window.addEventListener("scroll", () => {
   }
 });
 
+//login user 
+
+function getLoggedInUser() {
+  const userJSON = localStorage.getItem("user");
+  if (!userJSON) return null;
+  return JSON.parse(userJSON);
+}
+
+const loggedUser = getLoggedInUser();
+if (loggedUser) {
+  const currUser = userAc.querySelector('a span:nth-child(2)')
+  currUser.textContent = loggedUser.name;
+  const userIcon = userAc.querySelector('a span:nth-child(1)')
+
+  //icon remove when logged in  
+  userIcon.className = 'text-xs ';
+  userIcon.textContent = 'Hello, ';
+  currUser.classList.add('font-semibold');
+
+  //ancher tag link remove
+  userAc.querySelector('a').href = '#';
+
+  //make a dropdown for loggedin user
+  const div = userAc.querySelector('a div')
+  userAc.addEventListener('click', (e) => {
+    e.preventDefault();
+    div.classList.toggle('hidden')
+    e.stopPropagation();
+  })
+  document.addEventListener("click", (e)=>{
+    div.classList.add('hidden');
+  })
+  const btn = userAc.querySelector('a div button')
+  btn.addEventListener('click', () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  })
+}
+
+
 
 const section = [
   { element: Colgate, data: colgateData },
@@ -81,8 +122,12 @@ function renderProducts(element, data) {
   const cardHTML = data.map((e) =>
 
     `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg">
-      <div class="w-full border border-gray-100 overflow-hidden">
+      <div class="relative w-full border border-gray-100 overflow-hidden">
         <img class="w-full hover:scale-[1.1] transition-all" src="${e.img}" alt="${e.name}">
+        ${loggedUser ? 
+        `<div class="icon absolute top-3 right-3">
+          <i class="fa-solid fa-heart text-white text-shadow-[-0.5px_-0.5px_2px_grey,0.5px_0.5px_2px_grey]"></i>
+        </div>` :  '' }
       </div>
       <div class="flex flex-col w-full">
         <p class="grow">
@@ -226,7 +271,7 @@ function cartPricing() {
   let gst = document.getElementById('gst');
   let total = document.getElementById('total');
 
-  const gstRate = 0.18; 
+  const gstRate = 0.18;
 
   let totalAmt = cartItems.reduce((sum, item) => {
     return sum + (Number(item.currPrice.replace("₹", '').trim()) * item.quantity);
@@ -245,4 +290,13 @@ function cartPricing() {
     finalTotal
   });
 }
+
+let icon = document.querySelectorAll('.icon')
+
+console.log(icon);
+
+// icon.onclick = () =>{
+//   console.log('clicked');
+  
+// }
 

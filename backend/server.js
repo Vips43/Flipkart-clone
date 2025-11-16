@@ -16,7 +16,6 @@ app.post("/signup", async (req, res) => {
     try {
         const { name, email, pass } = req.body;
         if (name && email && pass) {
-
             if (pass.length < 5) {
                 return res.status(400).json({
                     success: false,
@@ -80,6 +79,7 @@ app.post("/login", async (req, res) => {
 
 
 })
+
 
 app.listen(port, () => {
     console.log(`Backend running at http://localhost:${port}`);
