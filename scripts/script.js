@@ -80,6 +80,9 @@ if (loggedUser) {
   const currUser = userAc.querySelector('a span:nth-child(2)')
   currUser.textContent = loggedUser.name;
   const userIcon = userAc.querySelector('a span:nth-child(1)')
+  const ddUser = userAc.querySelector('div div p span');
+  ddUser.textContent = loggedUser.name;
+
 
   //icon remove when logged in  
   userIcon.className = 'text-xs ';
@@ -89,23 +92,33 @@ if (loggedUser) {
   //ancher tag link remove
   userAc.querySelector('a').href = '#';
 
-  //make a dropdown for loggedin user
-  const div = userAc.querySelector('a div')
+  // dropdown for loggedin user toggle hidden
+  const dropdown = userAc.querySelector('div.absolute')
   userAc.addEventListener('click', (e) => {
-    e.preventDefault();
-    div.classList.toggle('hidden')
     e.stopPropagation();
+    e.preventDefault();
+    const isClosed = dropdown.classList.contains("max-h-0");
+    if (isClosed) {
+      // OPEN DROPDOWN
+      dropdown.classList.remove("max-h-0", "opacity-0");
+      dropdown.classList.add("max-height");
+    } else {
+      // CLOSE DROPDOWN
+      dropdown.classList.add("max-h-0", "opacity-0");
+      dropdown.classList.remove("max-height");
+    }
   })
-  document.addEventListener("click", (e)=>{
-    div.classList.add('hidden');
+  document.addEventListener("click", (e) => {
+    dropdown.classList.remove("max-height");
+    dropdown.classList.add("max-h-0", "opacity-0");
+
   })
-  const btn = userAc.querySelector('a div button')
+  const btn = userAc.querySelector('div div div button')
   btn.addEventListener('click', () => {
     localStorage.removeItem("user");
     window.location.reload();
   })
 }
-
 
 
 const section = [
@@ -124,10 +137,10 @@ function renderProducts(element, data) {
     `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg">
       <div class="relative w-full border border-gray-100 overflow-hidden">
         <img class="w-full hover:scale-[1.1] transition-all" src="${e.img}" alt="${e.name}">
-        ${loggedUser ? 
-        `<div class="icon absolute top-3 right-3">
+        ${loggedUser ? `
+        <div class="icon absolute top-3 right-3 cursor-pointer">
           <i class="fa-solid fa-heart text-white text-shadow-[-0.5px_-0.5px_2px_grey,0.5px_0.5px_2px_grey]"></i>
-        </div>` :  '' }
+        </div>` : ``}
       </div>
       <div class="flex flex-col w-full">
         <p class="grow">
@@ -153,7 +166,6 @@ function renderProducts(element, data) {
     </div>`
   ).join('');
   element.innerHTML = cardHTML;
-
 }
 let cartItems = [];
 
@@ -265,7 +277,6 @@ window.cartCleaner = cartCleaner
 window.changeQty = changeQty
 window.updateCartUI = updateCartUI;
 
-
 function cartPricing() {
   let Amt = document.getElementById('Amt');
   let gst = document.getElementById('gst');
@@ -291,12 +302,15 @@ function cartPricing() {
   });
 }
 
-let icon = document.querySelectorAll('.icon')
+document.addEventListener("click", (e) => {
+  const heart = e.target.closest(".icon");
+  if (!heart) return;
+  heart.classList.toggle("active-heart")
+})
 
-console.log(icon);
+let wishList = [];
 
-// icon.onclick = () =>{
-//   console.log('clicked');
+console.log(wishList);
+function wishListProducts(){
   
-// }
-
+}

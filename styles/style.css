@@ -98,3 +98,10 @@ max-width: 1024px;
   opacity: 1;
   z-index: 50;
 }
+.active-heart i {
+  color: red !important;
+}
+.max-height{
+  max-height: 200px;
+  opacity: 1;
+}
