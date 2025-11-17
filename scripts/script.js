@@ -121,8 +121,10 @@ if (loggedUser) {
 
   const wishlistIcon = dropdown.querySelector("div i")
   wishlistIcon.addEventListener("click", () => {
-    wishlistContainer.style.display = 'flex'
-  })
+  wishlistContainer.style.display = 'flex';
+  document.documentElement.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
+});
 
 }
 
@@ -320,12 +322,16 @@ document.addEventListener("click", (e) => {
   heartCard = heart.closest(".card");
 
   wishListProducts()
+  if(!wishList) heat.classList.remove('active-heart');
 })
 
 
-document.getElementById('closeIcon').addEventListener("click", () => {
-  wishlistBody.style.display = 'none'
-})
+const closeBtn = document.getElementById('closeIcon')
+closeBtn.addEventListener("click", () => {
+  wishlistContainer.style.display = 'none';
+  document.documentElement.style.overflow = "";
+  document.body.style.overflow = "";
+});
 
 function wishListProducts() {
 
