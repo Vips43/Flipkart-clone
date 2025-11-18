@@ -7,11 +7,13 @@ let searchDiv = document.getElementById("searchDiv"),
   shoppingCart = document.getElementById('shopping_cart'),
   userAc = document.getElementById('userAc'),
   inputDropDown = document.querySelector('#inputDropDown'),
+  hiiii = document.querySelector('#hiiii'),
   cartIcon = document.querySelector('#cartIcon'),
+  searchIcon = document.querySelector('#search-icon'),
   cartIconShow = document.querySelector('#cartIconShow'),
   dropDownCart = document.querySelector('.drop-down-cart'),
   clearBtn = document.querySelector('.clearBtn'),
-  inputTag = document.querySelector('.inputTag'),
+  inputTag = document.querySelector('#inputTag'),
   pricingSection = document.querySelector('.pricingSection')
 let buttons = document.querySelectorAll('.btn')
 let product = document.querySelectorAll('.product')
@@ -121,10 +123,11 @@ if (loggedUser) {
 
   const wishlistIcon = dropdown.querySelector("div i")
   wishlistIcon.addEventListener("click", () => {
-  wishlistContainer.style.display = 'flex';
-  document.documentElement.style.overflow = "hidden";
-  document.body.style.overflow = "hidden";
-});
+    wishlistContainer.style.display = 'flex';
+    wishlistContainer.style.overflow = 'auto'
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+  });
 
 }
 
@@ -134,15 +137,24 @@ const section = [
   { element: Mobile, data: mobileData },
   { element: Footwear, data: footwearData },
 ]
+
+let dt = section.map(item => item.data.map(i => i.name))
+
+console.log(dt);
+
+let searchProducts = [...colgateData, ...mobileData, ...footwearData]
+
+
 document.addEventListener("DOMContentLoaded", () => {
   section.forEach(({ element, data }) => renderProducts(element, data));
-
+  searchFun()
 })
+
 function renderProducts(element, data) {
 
   const cardHTML = data.map((e) =>
 
-    `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg">
+    `<div class="card p-2 bg-gray-50 flex flex-col justify-between items-center gap-2 shadow-md transition-all rounded-lg" data-id = "${e.id}">
       <div class="relative w-full border border-gray-100 overflow-hidden">
         <img class="w-full hover:scale-[1.1] transition-all" src="${e.img}" alt="${e.name}">
         ${loggedUser ? `
@@ -314,17 +326,22 @@ let wishList = [];
 
 let heartCard;
 
+//wishlist toggle
 document.addEventListener("click", (e) => {
   const heart = e.target.closest(".icon");
   if (!heart) return;
-  heart.classList.toggle("active-heart")
-
+  
   heartCard = heart.closest(".card");
-
-  wishListProducts()
-  if(!wishList) heat.classList.remove('active-heart');
+  const id = heartCard.querySelector('.id').textContent;
+  
+  heart.classList.toggle("active-heart")
+  if(heart.classList.contains("active-heart")){
+    addToWishList()
+    
+  }else removeFromWishList(id)
+  console.log(wishList);
+  wishListUI()
 })
-
 
 const closeBtn = document.getElementById('closeIcon')
 closeBtn.addEventListener("click", () => {
@@ -333,7 +350,7 @@ closeBtn.addEventListener("click", () => {
   document.body.style.overflow = "";
 });
 
-function wishListProducts() {
+function addToWishList() {
 
   if (!heartCard) return;
 
@@ -347,35 +364,126 @@ function wishListProducts() {
   if (!wishList.some(item => item.id === favProduct.id)) {
     wishList.push(favProduct);
   }
-
-  // wishList.push(favProduct)
-  console.log(wishList)
-
+}
+function wishListUI(){
   const wishListContainer = document.getElementById('wishListContainer')
-
   wishListContainer.innerHTML = '';
 
   wishList.forEach(list => {
-    const div = document.createElement("div")
+    const div = document.createElement("div");
     div.className = "border border-rose-200 p-2";
     div.innerHTML =
-      `<div class="p-2 border border-gray-200">
+      `<div class="p-2 max-h-3/5 border border-gray-200">
         <img src="${list.img}" alt="">
+        </div>
+      <div class="text-center text-sm">
+        <span>${list.prName}</span>       
       </div>
-      <div class="text-center ">
-        ${list.prName}
-      </div>
-      <div>
-        ${list.currPrice}
+      <div class="flex items-center justify-between">
+        <span class="text-lg font-semibold">${list.currPrice}</span>
+        <button class="remove-btn text-red-500 text-sm ml-2" data-id="${list.id}"> 🗑️ </button>
       </div>`
     wishListContainer.append(div)
   })
 }
+  
+
+function removeFromWishList(id) {
+  wishList = wishList.filter(wish=> wish.id !== id)
+  // console.log(wishList);
+  
+}
+
+
+
 const emptyWishlist = document.getElementById("emptyWishlist")
-emptyWishlist.addEventListener("click", ()=> {
+emptyWishlist.addEventListener("click", () => {
   wishList = []
   console.log('clicked');
   wishListContainer.innerHTML = '';
-
 })
 
+
+const results = section.map(item => item.data.map(i => i.name))
+console.log(results);
+
+// search function input handler
+function searchFun() {
+  inputTag.addEventListener("input", () => {
+    let val = inputTag.value.toLowerCase();
+    inputDropDown.innerHTML = "";
+
+    if (!val) {
+      inputDropDown.classList.remove("active");
+      return;
+    }
+    const results = searchProducts.filter(x =>
+      x.name.toLowerCase().includes(val)
+    );
+
+    if (results.length === 0) {
+      inputDropDown.classList.remove("active");
+      return;
+    }
+
+    inputDropDown.classList.add("active");
+
+    results.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item.name;
+      li.className = "p-1 bg-gray-100 hover:bg-gray-50 cursor-pointer";
+      inputDropDown.append(li);
+
+      li.addEventListener("click", () => {
+        inputTag.value = item.name;      // fill input
+        inputDropDown.classList.remove("active"); // close dropdown
+        inputDropDown.innerHTML = "";    // clear items
+      });
+
+    });
+  });
+
+}
+
+function search() {
+  searchIcon.addEventListener("click", () => {
+    let val = inputTag.value
+    if (!val) return inputTag.placeholder = 'please type to search'
+    else console.log(val)
+  })
+
+
+  carhtml =
+    `<div class="card p-2 bg-gray-50 flex flex-col justify-between 
+      items-center gap-2 shadow-md transition-all rounded-lg">
+      <div class="relative w-full border border-gray-100 overflow-hidden">
+        <img class="w-full hover:scale-[1.1] transition-all" src="${e.img}" alt="${e.name}">
+        ${loggedUser ? `
+        <div class="icon absolute top-3 right-3 cursor-pointer">
+          <i class="fa-solid fa-heart text-white text-shadow-[-0.5px_-0.5px_2px_grey,0.5px_0.5px_2px_grey]"></i>
+        </div>` : ``}
+      </div>
+      <div class="flex flex-col w-full">
+        <p class="grow">
+          <span class="id hidden">${e.id}</span>
+          ${e.brand ? `<span class="block text-xs text-gray-400">${e.brand}</span>` : ""}
+          <span class="prName font-semibold">${e.name}</span>
+        </p>
+        <div class="flex justify-between flex-wrap items-center mt-1">
+          <p class="flex gap-2">
+            <span class="old-price text-xs text-gray-400 line-through">${e.oldPrice}₹</span>
+            <p class="flex items-center gap-1 text-xs md:text-sm lg:text-base font-bold">
+            <span class="curr-price ">${e.currPrice}<span>₹</span></span>
+            </p>
+            <span class="disc text-sm text-green-500">${e.disc}%</span>
+          </p>
+          <button
+            class="add-btn bg-blue-500 text-[0.6rem] h-6 py-1 px-2 self-end rounded-sm hover:bg-blue-700 cursor-pointer"
+            onclick="addToCart(this)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>`
+}
+// search()

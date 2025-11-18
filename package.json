@@ -1,27 +1,30 @@
 {
-  "scripts": {
-    "dev": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
-    "build": "npx tailwindcss -i ./src/input.css -o ./src/output.css"
-  },
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.13",
-    "express": "^5.1.0",
-    "tailwindcss": "^4.1.13"
-  },
-  "name": "e-comm",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Vips43/Flipkart-clone.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Vips43/Flipkart-clone/issues"
-  },
-  "homepage": "https://github.com/Vips43/Flipkart-clone#readme"
+ "scripts": {
+  "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+  "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css"
+ },
+ "dependencies": {
+  "express": "^5.1.0"
+ },
+ "name": "e-comm",
+ "version": "1.0.0",
+ "description": "",
+ "main": "index.js",
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/Vips43/Flipkart-clone.git"
+ },
+ "keywords": [],
+ "author": "",
+ "license": "ISC",
+ "type": "commonjs",
+ "bugs": {
+  "url": "https://github.com/Vips43/Flipkart-clone/issues"
+ },
+ "homepage": "https://github.com/Vips43/Flipkart-clone#readme",
+ "devDependencies": {
+  "@tailwindcss/cli": "^4.1.17",
+  "autoprefixer": "^10.4.22",
+  "postcss": "^8.5.6"
+ }
 }

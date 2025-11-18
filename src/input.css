@@ -1,10 +1,1 @@
 @import "tailwindcss";
-
-@media screen and (min-width: 600px) {
-  
-    .h2 {
-       font-size: 1.9rem;
-    }
-  
-}
-
